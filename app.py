@@ -22,7 +22,9 @@ def getHtmlWithInformation(nr, nrType):
     apiHelper = brregApiHandler(nr)
 
     #get information from apiHandler class
-    opplysningerMappingNameToValue = apiHelper.getopplMappingNameToValue()
+    opplysningerMappingNameToValue = None
+    if(not apiHelper.isError()):
+        opplysningerMappingNameToValue = apiHelper.getopplMappingNameToValue()
 
     #check if something is saved previously
     if path.exists(f'static/data/{nrType}/{nr}'):
@@ -45,7 +47,7 @@ def getHtmlWithInformation(nr, nrType):
     return render_template('./search.html', nr=nr, nrType=nrType, opplysningerMapping=opplysningerMappingNameToValue)
 
 @app.route('/search/orgnr', methods={'POST'})
-def searchOrdNr():
+def searchOrgNr():
     #check if request method is post
     if request.method == 'POST':
         #get number from form

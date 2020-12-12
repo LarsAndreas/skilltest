@@ -29,11 +29,12 @@ class apiHandler:
     
     def getJsonFromApi(self):
         requestModule = requests.get(self.url)
+        print(requestModule)
         return requestModule.json()
 
     def isError(self):
         requestModule = requests.get(self.url)
-        return requestModule.status_code == 400
+        return requestModule.status_code != 200
 
 class brregApiHandler(apiHandler):
 
