@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Skilltest</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navbar.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/formStyle.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/saved.css') }}" />
+</head>
+
+<body>
+    <div id=container>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/saved">Saved Company</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="background">
+            <div id="foreground">
+                <h1>Saved Companies</h1>
+                <h2>Please select an organisation:</h2>
+                {%for number, name in orgNrsAndNames%}
+                <div>
+                    <form class="savedNumbersFrom" action="/search/orgnr" method = "post">
+                        <button type="submit" name="nm" value="{{number}}">{{name}}</button> 
+                    </form>
+                    <form class="savedNumbersFrom" action="/search/orgnr/remvove" method = "post">
+                        <button type="submit" name="delete" value="{{number}}">Remove</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <footer>
+            <p>Author: Lars Andreas Sørensen Vestbø</p>
+            <p><a href="mailto:larsandreassovo@gmail.com">larsandreassovo@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Skilltest</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navbar.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/formStyle.css') }}" />
+</head>
+
+<body>
+    <div id=container>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/saved">Saved Company</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="background">
+            <div id="foreground">
+                <h1>Type some information about the company</h1>
+                <form action="/search/save" method="post">
+                    <input type="hidden" name="nr" value="{{nr}}" />
+                    <input type="hidden" name="nrType" value="{{nrType}}" />
+                        {% if information %}
+                            <textarea name="information" rows="4" cols="50">{{information}}</textarea>
+                        {% else %}
+                            <textarea name="information" rows="4" cols="50">Type what you want here</textarea>
+                        {% endif %}
+                <p><input type="submit" value="Save" /></p>
+                </form>
+                {% if error %}
+                    <h3 class="error">There is no information related to the organisation number: {{nr}}</h3>
+                    <p>Please check that you typed the number correctly.</p>
+                    <p>(Remember that the organisation number must be exactly 9 digits)</p>
+                {% else %}
+                    <h2>Basisopplysninger</h2>
+                    <br>
+                    <ul>
+                        {% for key, value in opplysningerMapping.items() %}
+                            <li>
+                                <b>{{key}}</b> <hr> {{value}}
+                            </li>
+                            <br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        
+        <footer>
+            <p>Author: Lars Andreas Sørensen Vestbø</p>
+            <p><a href="mailto:larsandreassovo@gmail.com">larsandreassovo@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>

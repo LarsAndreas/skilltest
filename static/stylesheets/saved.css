@@ -1,0 +1,28 @@
+.savedNumbersFrom {
+    display:inline-block
+}
+
+form button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    min-width: 200px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #65dd69;
+}
+
+form button[name="delete"] {
+    background-color: #9b1c1c;
+    min-width: 50px;
+}
+
+form button[name="delete"]:hover {
+    background-color: #c42c2c;
+}

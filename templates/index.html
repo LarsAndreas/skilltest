@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Skilltest</title>
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/navbar.css') }}" />
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/formStyle.css') }}" />
+</head>
+
+<body>
+	<div id=container>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/saved">Saved Company</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div id="background">
+			<div id="foreground">
+				<h1><b>Save information about a company</b></h1>
+				<form action="/search/orgnr" method="post">
+					<p>Please enter organisation number:</p>
+					<p><input type="text" name="nm" /></p>
+					<p><input type="submit" value="Search" /></p>
+				</form>
+			</div>
+		</div>
+
+		<footer>
+			<p>Author: Lars Andreas Sørensen Vestbø</p>
+			<p><a href="mailto:larsandreassovo@gmail.com">larsandreassovo@gmail.com</a></p>
+		</footer>
+	</div>
+
+</body>
+
+</html>
