@@ -29,7 +29,7 @@ body {
 
 #foreground {
     width: 60%;
-    height: 100vh;
+    min-height: 100vh;
     background: white;
     text-align: center;
     margin: auto;
