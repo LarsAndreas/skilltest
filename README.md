@@ -5,6 +5,7 @@ Hva er dette?
 -------------
 
 Dette er en Python/Flask webapplikasjon. Du kan søke opp informasjon om ulike bedrifter ved å skrive inn organisasjon nummeret.
+Du kan også lagre potensielle kunder, og notere hva som helst om bedriften.
 
 
 Hvordan kjører du applikasjonen?
