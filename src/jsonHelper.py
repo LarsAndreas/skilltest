@@ -4,7 +4,7 @@ class jsonHelper:
     def getIfExists(json, keys):
         for key in keys:
             if not key in json:
-                return "Unknown"
+                return "Ukjent"
             json = json[key]
         return json
 
