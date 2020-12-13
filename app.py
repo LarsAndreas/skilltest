@@ -30,9 +30,18 @@ def searchOrgNr():
     #check if something is saved previously
     information = fileManager.readInfo(nr)
 
-    print(nr)
-
     return render_template('./search.html', nr=nr, information=information, opplysningerMapping=opplysningerMapping)
+
+@app.route('/search/postnr', methods={'POST'})
+def searchPostNr():
+    nr = request.form['nm']
+
+    #format the number
+    nr = textFormater.format(nr)
+
+    companies = apiHandler.getPostNumbers(nr)
+
+    return render_template('./postnr.html', companies = companies)
 
 @app.route('/search/save', methods={'POST'})
 def save():
@@ -65,6 +74,9 @@ def remove():
 def saved():
     #get filenames from data folder
     orgNrs = fileManager.getAllOrgNr()
+
+
+    apiHandler.getPostNumbers("4364")
 
     #get names from org numbers
     names = apiHandler.getNames(orgNrs)

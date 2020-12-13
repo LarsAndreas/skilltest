@@ -14,17 +14,22 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/saved">Saved Company</a></li>
+					<li><a href="/">Finn nye bedrifter</a></li>
+					<li><a href="/saved">Lagret bedrifter</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<div id="background">
 			<div id="foreground">
-				<h1><b>Save information about a company</b></h1>
+				<h1><b>Her kan du søke etter ulike bedrifter</b></h1>
 				<form action="/search/orgnr" method="post">
-					<p>Please enter organisation number:</p>
+					<p>Skriv inn organisasjonsnummeret:</p>
+					<p><input type="text" name="nm" /></p>
+					<p><input type="submit" value="Search" /></p>
+				</form>
+				<form action="/search/postnr" method="post">
+					<p>Skriv inn postnummeret:</p>
 					<p><input type="text" name="nm" /></p>
 					<p><input type="submit" value="Search" /></p>
 				</form>
@@ -32,7 +37,7 @@
 		</div>
 
 		<footer>
-			<p>Author: Lars Andreas Sørensen Vestbø</p>
+			<p>Lars Andreas Sørensen Vestbø</p>
 			<p><a href="mailto:larsandreassovo@gmail.com">larsandreassovo@gmail.com</a></p>
 		</footer>
 	</div>

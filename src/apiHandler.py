@@ -3,8 +3,10 @@ import requests
 
 class apiHandler:
 
+    apiLink = "https://data.brreg.no/enhetsregisteret/api/"
     mainUrl = "https://data.brreg.no/enhetsregisteret/api/enheter/"
     subUrl = "https://data.brreg.no/enhetsregisteret/api/underenheter/"
+    postNrUrl = "https://data.brreg.no/enhetsregisteret/api/enheter/?forretningsadresse.postnummer="
 
     def __init__(self, nr):
         self.nr = nr
@@ -34,6 +36,17 @@ class apiHandler:
             infoDictionary = apiHandle.getDictionary()
             names.append(infoDictionary["Navn"])
         return names
+
+    @staticmethod
+    def getPostNumbers(postNr):
+        apiUrl = apiHandler.postNrUrl + postNr
+        apiUrlRequest = requests.get(apiUrl)
+        if(apiUrlRequest):
+            jsonDictionary = apiUrlRequest.json()
+            if("_embedded" in jsonDictionary):
+                companies = [ (company["organisasjonsnummer"], company["navn"]) for company in jsonDictionary["_embedded"]['enheter']]
+                return companies
+        return []
 
 
     def getDictionary(self):

@@ -15,23 +15,23 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/saved">Saved Company</a></li>
+					<li><a href="/">Finn nye bedrifter</a></li>
+					<li><a href="/saved">Lagret bedrifter</a></li>
                 </ul>
             </nav>
         </header>
 
         <div id="background">
             <div id="foreground">
-                <h1>Saved Companies</h1>
-                <h2>Please select an organisation:</h2>
+                <h1>Lagret bedrifter</h1>
+                <h2>Velg en bedrift:</h2>
                 {%for number, name in orgNrsAndNames%}
                 <div>
                     <form class="savedNumbersFrom" action="/search/orgnr" method = "post">
                         <button type="submit" name="nm" value="{{number}}">{{name}}</button> 
                     </form>
                     <form class="savedNumbersFrom" action="/search/orgnr/remvove" method = "post">
-                        <button type="submit" name="delete" value="{{number}}">Remove</button>
+                        <button type="submit" name="delete" value="{{number}}">Fjern</button>
                     </form>
                 </div>
                 {% endfor %}
