@@ -31,14 +31,14 @@
                 </form>
                 <h2>Basisopplysninger</h2>
                 <br>
-                <ul>
+                <table>
                     {% for key, value in opplysningerMapping.items() %}
-                        <li>
-                            <b>{{key}}</b> <hr> {{value}}
-                        </li>
-                        <br>
+                    <tr>
+                        <td>{{key}}</td>
+                        <td>{{value}}</td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </table>
             </div>
         </div>
         
