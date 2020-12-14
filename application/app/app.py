@@ -4,9 +4,9 @@ import os
 from flask import Flask, request, jsonify, render_template, redirect, url_for
 from waitress import serve
 
-from src.textFormater import textFormater
-from src.apiHandler import apiHandler
-from src.fileManager import fileManager
+from textFormater import textFormater
+from apiHandler import apiHandler
+from fileManager import fileManager
 
 app = Flask(__name__)
 
@@ -24,8 +24,7 @@ def searchOrgNr():
     nr = textFormater.format(nr)
 
     #get dictionary from api
-    apiHandle = apiHandler(nr)
-    opplysningerMapping = apiHandle.getDictionary()
+    opplysningerMapping = apiHandler.getDictionary(nr)
 
     #check if something is saved previously
     information = fileManager.readInfo(nr)
@@ -75,6 +74,7 @@ def saved():
     #get filenames from data folder
     orgNrs = fileManager.getAllOrgNr()
 
+    print(apiHandler.getCoordinates("Longhammarvegen 11"))
 
     apiHandler.getPostNumbers("4364")
 
@@ -88,4 +88,5 @@ def saved():
     return render_template('./saved.html', orgNrsAndNames = orgNrsAndNames)
 
 if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0')
+    #serve(app, host='0.0.0.0', port=8888)

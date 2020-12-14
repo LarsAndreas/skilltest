@@ -3,20 +3,19 @@ from os import path
 
 class fileManager:
 
+    basePath = "./app/static/data/orgnr/"
+
     @staticmethod
     def getPath(nr):
-        return f'./static/data/orgnr/{nr}'
+        return fileManager.basePath + nr
 
     @staticmethod
     def removeNr(nr):
-        #check that you have a saved version of that org number
         if os.path.exists(fileManager.getPath(nr)):
-            #delete that file
             os.remove(fileManager.getPath(nr))
 
     @staticmethod
     def readInfo(nr):
-        #check that you have a saved version of that org number
         if os.path.exists(fileManager.getPath(nr)):
             with open(fileManager.getPath(nr), 'r') as file:
                 return file.read()
@@ -29,4 +28,4 @@ class fileManager:
 
     @staticmethod
     def getAllOrgNr():
-        return list(os.listdir("./static/data/orgnr"))
+        return list(os.listdir(fileManager.basePath))
