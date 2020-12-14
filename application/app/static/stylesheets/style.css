@@ -15,7 +15,7 @@ h1 {
     padding-top: 20px;
 }
 
-table tr:nth-child(even){
+table tr:nth-child(odd){
     background-color: #f2f2f2;
 }
 
