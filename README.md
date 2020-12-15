@@ -11,10 +11,10 @@ Du kan også lagre potensielle kunder, og notere og lagre hva som helst om bedri
 Hvordan kjører du applikasjonen?
 ---------------
 
-### Prerequisities
+### Forutsetninger
 
 
-In order to run this container you'll need docker installed.
+For å kjøre dette programmet må docker være installert.
 
 * [Windows](https://docs.docker.com/windows/started)
 * [OS X](https://docs.docker.com/mac/started/)
