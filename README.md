@@ -10,7 +10,30 @@ Du kan også lagre potensielle kunder, og notere og lagre hva som helst om bedri
 
 Hvordan kjører du applikasjonen?
 ---------------
-1. Last ned python fra https://www.python.org/. (Husk å krysse av "Add python X.X to PATH", og installere "pip install")
-2. Kjør `getRequredModules.bat` filen for å installere nødvendige moduler.
-2. Kjør `start.bat` filen.
-3. Skrive http://localhost:8080/ i søkefeltetet ditt og trykke enter.  
+
+### Forutsetninger
+
+
+For å kjøre dette programmet må docker være installert.
+
+* [Windows](https://docs.docker.com/windows/started)
+* [OS X](https://docs.docker.com/mac/started/)
+* [Linux](https://docs.docker.com/linux/started/)
+
+### Hvordan lager du applikasjonen?
+
+Naviger til mappen som inneholder `docker-compose.yml` i terminalen din
+
+
+Deretter skriv dette i terminalen din
+```shell
+docker-compose build
+```
+
+Hvis du skriver dette vil docker lage en container og starte applikasjonen automatisk.
+```shell
+docker-compose up
+```
+
+For å se webapplikasjonen må du besøke denne linken
+http://localhost:5000/
