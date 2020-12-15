@@ -30,6 +30,10 @@ table td {
     padding: 8px;
 }
 
+td, th {
+    text-align: left;
+}
+
 body {
     margin: 0;
     padding: 0;
