@@ -35,5 +35,5 @@ Hvis du skriver dette vil docker lage en container og starte applikasjonen autom
 docker-compose up
 ```
 
-For å se webapplikasjonen trenger du å besøke denne linken
+For å se webapplikasjonen må du besøke denne linken
 http://localhost:5000/
