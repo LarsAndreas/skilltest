@@ -2,17 +2,19 @@ from jsonHelper import jsonHelper
 
 class Company:
 
-    def getDictionary(json):
-        return {
-            "Organisasjonsnummeret": jsonHelper.getIfExists(json, ["organisasjonsnummer"]),
-            "Navn": jsonHelper.getIfExists(json, ["navn"]),
-            "Antall ansatte": jsonHelper.getIfExists(json, ["antallAnsatte"]),
-            "Organisasjonsform": jsonHelper.getIfExists(json, ["organisasjonsform", "beskrivelse"]),
-            "Hjemmeside": jsonHelper.getIfExists(json, ["hjemmeside"]),
-            "Forretningsadresse": jsonHelper.listToString(jsonHelper.getIfExists(json, ["forretningsadresse", "adresse"])),
-            "Postnummer (forretningsadresse)": jsonHelper.getIfExists(json, ["forretningsadresse", "postnummer"]),
-            "Postadresse": jsonHelper.getIfExists(json, ["postadresse", "adresse"]),
-            "Postnummer (postadresse)": jsonHelper.getIfExists(json, ["postadresse", "postnummer"]),
-            "Konkurs": jsonHelper.getIfExists(json, ["konkurs"]),
-            "Målform": jsonHelper.getIfExists(json, ["maalform"])
+    brrgDictionary = {
+            "Organisasjonsnummeret": ["organisasjonsnummer"],
+            "Navn": ["navn"],
+            "Antall ansatte": ["antallAnsatte"],
+            "Organisasjonsform": ["organisasjonsform", "beskrivelse"],
+            "Hjemmeside": ["hjemmeside"],
+            "Forretningsadresse": ["forretningsadresse", "adresse"],
+            "Postnummer (forretningsadresse)": ["forretningsadresse", "postnummer"],
+            "Postadresse": ["postadresse", "adresse"],
+            "Postnummer (postadresse)": ["postadresse", "postnummer"],
+            "Konkurs": ["konkurs"],
+            "Målform": ["maalform"]
         }
+
+    def getDictionary(json):
+        return {k: jsonHelper.getAndFormat(json, v) for k, v in Company.brrgDictionary.items()}
