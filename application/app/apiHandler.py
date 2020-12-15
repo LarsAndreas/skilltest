@@ -1,4 +1,5 @@
 from company import Company
+from jsonHelper import jsonHelper
 import requests
 
 class apiHandler:
@@ -43,18 +44,26 @@ class apiHandler:
         return []
 
     @staticmethod
-    def getCoordinates(adress):
-        apiUrlRequest = apiHandler.getRequest(URL.coordinatesUrl, adress)
-
-        if(apiUrlRequest):
-            jsonDictionary = apiUrlRequest.json()
-            if(jsonDictionary["adresser"]):
-                #There is only one adress (We can therefore pick out the first element)
-                adressInfo = jsonDictionary["adresser"][0]
-                latitude = adressInfo["representasjonspunkt"]["lat"]
-                longitude = adressInfo["representasjonspunkt"]["lon"]
-                return [latitude, longitude]
-        return []
+    def getCoordinates(nr):
+        response = apiHandler.getOrgInfo(nr)
+        if not response:
+            return []
+        else:
+            adresses = response.json()["forretningsadresse"]["adresse"]
+        
+            coordinates = []
+            for adress in adresses:
+                #geonorge.no api
+                apiUrlRequest = apiHandler.getRequest(URL.coordinatesUrl, adress)
+                if(apiUrlRequest):
+                    jsonDictionary = apiUrlRequest.json()
+                    if(jsonDictionary["adresser"]):
+                        #There is only one adress (We can therefore pick out the first element)
+                        adressInfo = jsonDictionary["adresser"][0]
+                        latitude = adressInfo["representasjonspunkt"]["lat"]
+                        longitude = adressInfo["representasjonspunkt"]["lon"]
+                        coordinates.append([adress, latitude, longitude])
+            return coordinates
 
 
     @staticmethod
