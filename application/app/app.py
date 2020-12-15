@@ -26,10 +26,13 @@ def searchOrgNr():
     #get dictionary from api
     opplysningerMapping = apiHandler.getDictionary(nr)
 
+    #get cord from api
+    coordinatesMapping = apiHandler.getCoordinates(nr)
+
     #check if something is saved previously
     information = fileManager.readInfo(nr)
 
-    return render_template('./search.html', nr=nr, information=information, opplysningerMapping=opplysningerMapping)
+    return render_template('./search.html', nr=nr, information=information, opplysningerMapping=opplysningerMapping, coordinatesMapping=coordinatesMapping)
 
 @app.route('/search/postnr', methods={'POST'})
 def searchPostNr():
@@ -73,10 +76,6 @@ def remove():
 def saved():
     #get filenames from data folder
     orgNrs = fileManager.getAllOrgNr()
-
-    print(apiHandler.getCoordinates("Longhammarvegen 11"))
-
-    apiHandler.getPostNumbers("4364")
 
     #get names from org numbers
     names = apiHandler.getNames(orgNrs)
