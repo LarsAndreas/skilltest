@@ -23,19 +23,10 @@
 
         <div id="background">
             <div id="foreground">
-                <h1>Postnummer søk</h1>
-                <h2>Velg en bedrift:</h2>
-                {% if companies%}
-                    {%for number, name in companies%}
-                    <div>
-                        <form class="savedNumbersFrom" action="/search/orgnr" method = "post">
-                            <button type="submit" name="nm" value="{{number}}">{{name}}</button> 
-                        </form>
-                    </div>
-                    {% endfor %}
-                {% else %}
-                    <p>Det er ingen bedrifter registrert med dette postnummeret</p>
-                {% endif %}
+                <p class="error">{{ErrorMsg}}</p>
+                <form method="get" action="/">
+                    <button type="submit">Gå tilbake</button>
+                </form>
             </div>
         </div>
         

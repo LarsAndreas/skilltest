@@ -23,6 +23,9 @@ def searchOrgNr():
     #format the number
     nr = textFormater.format(nr)
 
+    if(not textFormater.validOrgNr(nr)):
+        return redirect(url_for('orgError'))
+
     #get dictionary from api
     opplysningerMapping = apiHandler.getDictionary(nr)
 
@@ -34,6 +37,11 @@ def searchOrgNr():
 
     return render_template('./search.html', nr=nr, information=information, opplysningerMapping=opplysningerMapping, coordinatesMapping=coordinatesMapping)
 
+@app.route('/search/orgnr/error', methods={'GET'})
+def orgError():
+    message = "Du skrev et organisasjonsnummeret som ikke er gyldig. Husk at organisasjonsnummeret bare består av tall og må være nyaktig 9 siffere langt"
+    return render_template('./error.html', ErrorMsg=message)
+
 @app.route('/search/postnr', methods={'POST'})
 def searchPostNr():
     nr = request.form['nm']
@@ -41,9 +49,17 @@ def searchPostNr():
     #format the number
     nr = textFormater.format(nr)
 
+    if(not textFormater.validPostNr(nr)):
+        return redirect(url_for('postError'))
+
     companies = apiHandler.getPostNumbers(nr)
 
     return render_template('./postnr.html', companies = companies)
+
+@app.route('/search/postnr/error', methods={'GET'})
+def postError():
+    message = "Du skrev et postnummer som ikke er gyldig. Husk at postnummer bare består av tall og må være nyaktig 4 siffere langt"
+    return render_template('./error.html', ErrorMsg=message)
 
 @app.route('/search/save', methods={'POST'})
 def save():

@@ -13,3 +13,11 @@ class textFormater:
     @staticmethod
     def removeDots(text):
         return text.replace(".", "")
+
+    @staticmethod
+    def validOrgNr(nr):
+        return nr.isdigit() and len(nr)==9
+
+    @staticmethod
+    def validPostNr(nr):
+        return nr.isdigit() and len(nr)==4

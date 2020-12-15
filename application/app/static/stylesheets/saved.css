@@ -2,7 +2,7 @@
     display:inline-block
 }
 
-form button {
+button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -14,15 +14,15 @@ form button {
     font-size: 16px;
 }
 
-form button:hover {
+button:hover {
     background-color: #65dd69;
 }
 
-form button[name="delete"] {
+button[name="delete"] {
     background-color: #9b1c1c;
     min-width: 50px;
 }
 
-form button[name="delete"]:hover {
+button[name="delete"]:hover {
     background-color: #c42c2c;
 }
