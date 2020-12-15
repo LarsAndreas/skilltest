@@ -25,12 +25,12 @@ In order to run this container you'll need docker installed.
 Naviger til mappen som inneholder `docker-compose.yml` i terminalen din
 
 
-Deretter kan du skrive dette i terminalen din
+Deretter skriv dette i terminalen din
 ```shell
 docker-compose build
 ```
 
-Hvis du skriver dette vil docker lage en container og starte den automatisk.
+Hvis du skriver dette vil docker lage en container og starte applikasjonen automatisk.
 ```shell
 docker-compose up
 ```
